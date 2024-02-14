@@ -1,35 +1,101 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
+  overflow-x: scroll;
+  font-size: 16px;
+}
+
+/* WELCOME SCREEN */
+.welcome-screen {
+  position: fixed;
+  inset: 0;
+  background-image: url("./images/welcomescreen.png");
+  background-repeat: repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.welcome-screen-message {
+  background: rgba(255, 255, 255, 0.218);
+  padding: 30px;
+}
+
+.welcome-screen-message > p {
+  font-size: 30px;
+  font-weight: 600;
+  font-family: monospace;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.welcome-screen-message > p > span {
+  font-size: 30px;
+}
+
+.welcome-screen-message-icon {
+  margin-bottom: 10px;
+}
+
+.start-btn{
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: monospace;
+  outline: none;
+  text-transform: capitalize;
+  background: white;
+  border: 1px solid gray;
+  transition: transform .4s ease-in-out;
+
+}
+
+.start-btn:hover{
+  transform: scale(0.97);
+}
+
+.start-btn:active{
+  transform: scale(0.93);
 }
 
 main {
+  margin-block: 30px;
   padding: 30px;
   display: flex;
   flex-direction: column;
-  gap: 30px;
   color: black;
+  align-items: center;
+  border: 1px solid black;
 }
 
 #grid {
-  width: 400px;
-  height: 300px;
+  width: 300px;
   display: flex;
   flex-wrap: wrap;
 }
 
+
 .info {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  align-items: center;
-  width: 400px;
+  gap: 10px;
+  width: 300px;
+  padding: 10px;
   pointer-events: initial;
 }
 
-.modal{
+.modal {
   position: fixed;
   top: 0;
   left: 0;
@@ -39,21 +105,23 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-inline: 10px;
 }
 
-.c-message{
+.c-message {
   padding: 10px 20px;
   background: rgba(9, 219, 9, 0.577);
   color: black;
   text-align: center;
+  font-size: 20px;
 }
 
 .message {
-  padding-inline: 80px;
+  padding-inline: 30px;
   padding-block: 50px;
   background: white;
   border-radius: 10px;
-  font-size: 20px;
+  font-size: 16px;
   color: #000;
   font-weight: 600;
   display: flex;
@@ -62,20 +130,42 @@ main {
   gap: 10px;
 }
 
-.btn{
+.btn {
   width: fit-content;
   padding: 10px 15px;
   background-color: transparent;
   outline: none;
   border: 1px solid black;
   border-radius: 5px;
-  transition: transform .3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  font-weight: 600;
 }
 
-.btn:hover{
+.btn:hover {
   transform: scale(0.95);
 }
 
-.btn:active{
+.btn:active {
   transform: scale(0.92);
+}
+
+@media (min-width: 768px) {
+  #grid {
+    width: 400px;
+  }
+  main {
+    align-items: start;
+    gap: 30px;
+  }
+  .info {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 400px;
+    pointer-events: initial;
+  }
+
+  .message {
+    padding-inline: 80px;
+  }
 }

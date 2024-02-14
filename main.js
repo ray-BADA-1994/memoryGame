@@ -79,6 +79,8 @@ const updaterArray = [
 cardArray.sort(() => 0.5 - Math.random());
 
 // VARIABLES
+const startBtn = document.querySelector('.start-btn');
+const welcomeScreen = document.querySelector('.welcome-screen');
 const gridDisplay = document.querySelector("#grid");
 const resultDisplay = document.querySelector("#result");
 const numberOfTries = document.querySelector("#number-of-tries");
@@ -94,8 +96,15 @@ let count = 5; // There is some math needed to determine this value but for now 
 let numOfTries = 0;
 let level = 1;
 
+startBtn.addEventListener('click', handleStart)
+
 // setting the textcontent of the gamelevelNumber.
 gameLevelNumber.textContent = level;
+
+function handleStart(e) {
+   e.preventDefault();
+   welcomeScreen.style.display = "none";
+}
 
 function createBoard() {
   console.log(cardArray.length);
@@ -170,8 +179,7 @@ function checkNoTries() {
         updateCount(5);
         resetLevel();
         return;
-    //   } else if (count == 0 && cardsWon >= 3) {
-    } else if (count == 4) {
+          } else if (count == 0 && cardsWon >= 3) {
         newLevelIntroMessage(2);
         resizeGridDisplay();
         resetResultDisplayAndNumOfTriesTextcontent();
@@ -334,6 +342,7 @@ function gameOver() {
     //   updateCount(5);
     //   resetLevel();
     location.reload();
+    welcomeScreen.style.display = "none";
   });
   messageContainer.appendChild(continueBtn);
 
@@ -342,7 +351,9 @@ function gameOver() {
 }
 
 function resizeGridDisplay() {
-  gridDisplay.style.width = "600px";
+  if (window.screen.width > 768) {
+    gridDisplay.style.width = "600px";
+  }
 }
 
 function resetResultDisplayAndNumOfTriesTextcontent() {
