@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory Game</title>
+    <link rel="stylesheet" href="main.css" />
+    <script src="main.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <h3
+        style="
+          text-align: center;
+          background-color: rgba(165, 42, 42, 0.212);
+          padding-inline: 10px;
+          padding-block: 10px;
+          text-transform: capitalize;
+        "
+      >
+        Number of Tries for this level :
+        <span id="total-number-of-tries-per-level"></span>
+      </h3>
+      <div class="info">
+        <h3 class="game-level">Level: <span id="game-level-number"></span></h3>
+        <h3><span id="game-status"></span></h3>
+      </div>
+      <div class="info">
+        <h3>Score: <span id="result"></span></h3>
+        <h3>Number of tries: <span id="number-of-tries"></span></h3>
+      </div>
+      <div id="grid"></div>
+    </main>
+  </body>
+</html>
