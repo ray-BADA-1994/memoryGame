@@ -89,6 +89,7 @@ const gameStatus = document.querySelector("#game-status");
 const totalNumberOfTriesPerLevel = document.querySelector(
   "#total-number-of-tries-per-level"
 );
+const scorePerLevel = document.querySelector('#score-per-level');
 let cardsChosen = [];
 let cardsChosenId = [];
 const cardsWon = [];
@@ -104,6 +105,7 @@ gameLevelNumber.textContent = level;
 function handleStart(e) {
    e.preventDefault();
    welcomeScreen.style.display = "none";
+   createBoard();
 }
 
 function createBoard() {
@@ -119,7 +121,7 @@ function createBoard() {
   TotalNumberOfTriesPerLevel();
 }
 
-createBoard();
+
 
 function checkMatch() {
   const cards = document.querySelectorAll("img");
@@ -179,7 +181,8 @@ function checkNoTries() {
         updateCount(5);
         resetLevel();
         return;
-          } else if (count == 0 && cardsWon >= 3) {
+        // } else if (count == 0 && cardsWon >= 3) {
+        } else if (count == 4) {
         newLevelIntroMessage(2);
         resizeGridDisplay();
         resetResultDisplayAndNumOfTriesTextcontent();
@@ -203,7 +206,8 @@ function checkNoTries() {
         updateCount(8);
         resetLevel();
         return;
-      } else if ((count = 0 && cardsWon.length >= 4)) {
+      } else if ((count = 7)) {
+      // } else if ((count = 0 && cardsWon.length >= 4)) {
         newLevelIntroMessage(3);
         resizeGridDisplay();
         resetResultDisplayAndNumOfTriesTextcontent();
@@ -227,7 +231,8 @@ function checkNoTries() {
         updateCount(10);
         resetLevel();
         return;
-      } else if ((count = 0 && cardsWon.length >= 4)) {
+      // } else if ((count = 0 && cardsWon.length >= 4)) {
+      } else if ((count = 9)) {
         gameOver();
         return;
       }
@@ -247,7 +252,7 @@ function resetLevel() {
   }, 2000);
 }
 
-function flipCard(e) {
+function flipCard() {
   const cardId = this.getAttribute("data-id");
   this.setAttribute("src", cardArray[cardId].img);
   cardsChosen.push(cardArray[cardId].name);
@@ -261,12 +266,16 @@ function TotalNumberOfTriesPerLevel() {
   switch (level) {
     case 1:
       totalNumberOfTriesPerLevel.textContent = 5;
+      scorePerLevel.textContent = 3;
       break;
     case 2:
       totalNumberOfTriesPerLevel.textContent = 8;
+      scorePerLevel.textContent = 5;
+
       break;
     case 3:
       totalNumberOfTriesPerLevel.textContent = 10;
+      scorePerLevel.textContent = 7;
     default:
       break;
   }
